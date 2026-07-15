@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Tabloom</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="#top" aria-label="Tabloom home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span><strong>Tabloom</strong><small>Keep tabs clear. Save what matters.</small></span>
+      </a>
+      <label class="search-box">
+        <svg aria-hidden="true"><use href="#search-icon"></use></svg>
+        <input id="search" type="search" placeholder="Search tabs, groups, or pages…" autocomplete="off" />
+        <kbd>⌘K</kbd>
+      </label>
+      <div class="header-actions">
+        <button class="icon-button" id="refresh" type="button" aria-label="Refresh tabs" data-tooltip="Refresh tabs">
+          <svg><use href="#refresh-icon"></use></svg>
+        </button>
+        <label class="theme-control" data-tooltip="Theme">
+          <svg aria-hidden="true"><use href="#theme-icon"></use></svg>
+          <select id="theme" aria-label="Theme">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
+        <label class="theme-control sound-control" data-tooltip="Sound">
+          <svg aria-hidden="true"><use href="#sound-icon"></use></svg>
+          <select id="sound" aria-label="Sound">
+            <option value="off">Off</option>
+            <option value="subtle" selected>Subtle</option>
+            <option value="playful">Playful</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <main id="top" class="workspace">
+      <section class="module" data-section="later">
+        <header class="module-header">
+          <button class="collapse" type="button" aria-expanded="true" aria-controls="later-content">
+            <svg><use href="#chevron-icon"></use></svg>
+          </button>
+          <span class="section-icon later-icon"><svg><use href="#clock-icon"></use></svg></span>
+          <div class="module-title">
+            <div><h2>For Later</h2><span id="later-count" class="count">0</span></div>
+            <p>Pages you set aside stay here—even after the tab is closed.</p>
+          </div>
+          <div class="module-actions">
+            <span id="later-feedback" class="feedback" aria-live="polite"></span>
+            <button class="icon-button undo" data-undo="later" type="button" aria-label="Undo last action" data-tooltip="Undo" hidden>
+              <svg><use href="#undo-icon"></use></svg>
+            </button>
+            <button id="complete-all" class="bulk-button" type="button"><svg><use href="#check-icon"></use></svg>Complete all</button>
+          </div>
+        </header>
+        <div id="later-content" class="module-content"></div>
+      </section>
+
+      <section class="module" data-section="open">
+        <header class="module-header">
+          <button class="collapse" type="button" aria-expanded="true" aria-controls="open-content">
+            <svg><use href="#chevron-icon"></use></svg>
+          </button>
+          <span class="section-icon open-icon"><svg><use href="#tabs-icon"></use></svg></span>
+          <div class="module-title">
+            <div><h2>Open Tabs</h2><span id="open-count" class="count">0</span></div>
+            <p id="open-summary">Tabs currently open across your browser windows.</p>
+          </div>
+          <div class="module-actions">
+            <span id="open-feedback" class="feedback" aria-live="polite"></span>
+            <button class="icon-button undo" data-undo="open" type="button" aria-label="Undo last action" data-tooltip="Undo" hidden>
+              <svg><use href="#undo-icon"></use></svg>
+            </button>
+            <button id="close-all" class="bulk-button danger" type="button"><svg><use href="#close-circle-icon"></use></svg>Close all</button>
+          </div>
+        </header>
+        <div id="open-content" class="module-content"></div>
+      </section>
+
+      <section class="module" data-section="saved">
+        <header class="module-header">
+          <button class="collapse" type="button" aria-expanded="true" aria-controls="saved-content">
+            <svg><use href="#chevron-icon"></use></svg>
+          </button>
+          <span class="section-icon saved-icon"><svg><use href="#bookmark-icon"></use></svg></span>
+          <div class="module-title">
+            <div><h2>Saved</h2><span id="saved-count" class="count">0</span></div>
+            <p>Pages worth keeping, ready whenever you need them.</p>
+          </div>
+          <div class="module-actions">
+            <span id="saved-feedback" class="feedback" aria-live="polite"></span>
+            <button class="icon-button undo" data-undo="saved" type="button" aria-label="Undo last action" data-tooltip="Undo" hidden>
+              <svg><use href="#undo-icon"></use></svg>
+            </button>
+            <button id="remove-all" class="bulk-button danger" type="button"><svg><use href="#trash-icon"></use></svg>Remove all</button>
+          </div>
+        </header>
+        <div id="saved-content" class="module-content"></div>
+      </section>
+    </main>
+
+    <div id="empty-search" class="search-empty" hidden>
+      <svg><use href="#search-icon"></use></svg>
+      <h2>No matching pages</h2>
+      <p>Try a different title, site, or keyword.</p>
+      <button type="button" id="clear-search">Clear search</button>
+    </div>
+
+    <dialog id="confirm-dialog">
+      <form method="dialog">
+        <span class="dialog-icon"><svg><use href="#alert-icon"></use></svg></span>
+        <h2 id="dialog-title">Are you sure?</h2>
+        <p id="dialog-copy"></p>
+        <div class="dialog-actions">
+          <button value="cancel" class="secondary-button">Cancel</button>
+          <button value="confirm" id="dialog-confirm" class="confirm-button">Confirm</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="cursor-effects" class="cursor-effects" aria-hidden="true"></div>
+
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></symbol>
+      <symbol id="refresh-icon" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7"></path><path d="M20 5v6h-6"></path></symbol>
+      <symbol id="theme-icon" viewBox="0 0 24 24"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"></path><circle cx="12" cy="12" r="4"></circle></symbol>
+      <symbol id="sound-icon" viewBox="0 0 24 24"><path d="M5 10v4h3l4 4V6L8 10H5Z"></path><path d="M16 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12"></path></symbol>
+      <symbol id="chevron-icon" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"></path></symbol>
+      <symbol id="clock-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v5l3 2"></path></symbol>
+      <symbol id="tabs-icon" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="2"></rect><path d="M8 6V4h8v2"></path></symbol>
+      <symbol id="bookmark-icon" viewBox="0 0 24 24"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3-6 3V5a1 1 0 0 1 1-1Z"></path></symbol>
+      <symbol id="undo-icon" viewBox="0 0 24 24"><path d="M9 8 5 12l4 4"></path><path d="M6 12h7a6 6 0 0 1 6 6"></path></symbol>
+      <symbol id="check-icon" viewBox="0 0 24 24"><path d="m6 12 4 4 8-9"></path></symbol>
+      <symbol id="close-circle-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="m9 9 6 6m0-6-6 6"></path></symbol>
+      <symbol id="trash-icon" viewBox="0 0 24 24"><path d="M5 7h14M9 7V4h6v3m2 0-1 13H8L7 7"></path></symbol>
+      <symbol id="external-icon" viewBox="0 0 24 24"><path d="M14 5h5v5m0-5-8 8"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></symbol>
+      <symbol id="x-icon" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"></path></symbol>
+      <symbol id="more-icon" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></symbol>
+      <symbol id="alert-icon" viewBox="0 0 24 24"><path d="M12 4 3 20h18L12 4Z"></path><path d="M12 9v5m0 3h.01"></path></symbol>
+    </svg>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

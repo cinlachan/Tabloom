@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Tabloom",
+  "version": "2.1.2",
+  "description": "Organize open tabs, keep pages for later, and save what matters.",
+  "permissions": ["tabs", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Open Tabloom"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

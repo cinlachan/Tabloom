@@ -2,57 +2,83 @@
 
 > Keep tabs clear. Save what matters.
 
-Tabloom 是一个本地优先的 Chrome / Edge 标签页管理扩展，用于整理正在打开的网页、待处理网页和收藏网页。当前版本不需要后端，也不会把浏览数据发送到服务器。
+Tabloom is a local-first tab manager for Chrome and Microsoft Edge. It brings your open tabs, pages to revisit, and saved pages together in one calm desktop workspace.
 
-## 快速安装
+Tabloom does not require an account or backend server, and it does not send your browsing data anywhere.
 
-1. Chrome 打开 `chrome://extensions`；Edge 打开 `edge://extensions`。
-2. 开启右上角 **Developer mode / 开发者模式**。
-3. 点击 **Load unpacked / 加载已解压的扩展程序**。
-4. 选择整个 `tab-atlas` 文件夹，不要选择 ZIP 或某个单独文件。
-5. 在浏览器扩展菜单中固定 **Tabloom**。
-6. 点击 Tabloom 图标打开完整管理页面。
+## Installation
 
-## 功能概览
+### From a GitHub release
 
-- `For Later`：保存待处理网页；原标签页关闭后依然保留。
-- `Open Tabs`：按网站聚合所有浏览器窗口中正在打开的标签页。
-- `Saved`：长期收藏需要保留的网页。
-- 点击网页切换到已打开的标签页；已关闭的待处理或收藏网页会重新打开。
-- 支持单项和网站级操作，以及 `Complete all`、`Close all`、`Remove all`。
-- 支持搜索、区块折叠、操作确认和单步撤销。
-- 默认跟随系统主题，并可手动选择 Light / Dark。
-- 提供 Off / Subtle / Playful 三档本地操作声音、轻触感动效和点击位置光标反馈。
-- 产品界面使用英文；网页自身的标题和摘要保持原始语言。
+1. Download `tab-atlas.zip` from the [latest release](https://github.com/cinlachan/tabloom/releases/latest).
+2. Unzip the downloaded file.
+3. Open `chrome://extensions` in Chrome or `edge://extensions` in Microsoft Edge.
+4. Enable **Developer mode**.
+5. Click **Load unpacked**.
+6. Select the extracted folder that contains `manifest.json`.
+7. Pin **Tabloom** from the browser's Extensions menu.
+8. Click the Tabloom toolbar icon to open the dashboard.
 
-## 维护文档
+## Features
 
-- [产品与交互规格](docs/PRODUCT_SPEC.md)
-- [视觉与文案规范](docs/DESIGN_SYSTEM.md)
-- [技术架构与数据结构](docs/ARCHITECTURE.md)
-- [日常更新维护指南](docs/MAINTENANCE.md)
-- [测试与发布清单](docs/RELEASE_CHECKLIST.md)
-- [版本记录](CHANGELOG.md)
+- **For Later** keeps pages you want to handle later, even after their original tabs have been closed.
+- **Open Tabs** groups tabs from every browser window by website.
+- **Saved** keeps pages that are worth returning to over the long term.
+- Click a page to switch to its existing tab or reopen it if the tab has already been closed.
+- Manage individual pages, entire website groups, or use `Complete all`, `Close all`, and `Remove all`.
+- Search across page titles, summaries, website names, and URLs.
+- Collapse each section independently.
+- Confirm destructive bulk actions and undo the most recent action in each section.
+- Follow the system theme by default, with manual Light and Dark options.
+- Choose between Off, Subtle, and Playful interaction sounds.
+- Enjoy lightweight tactile animations and click-position cursor effects.
+- Keep webpage titles and summaries in their original language while the Tabloom interface remains in English.
 
-## 项目文件
+## Maintainer Documentation
+
+The following maintainer documents are currently written in Chinese:
+
+- [Product and interaction specification](docs/PRODUCT_SPEC.md)
+- [Visual design and copy guidelines](docs/DESIGN_SYSTEM.md)
+- [Technical architecture and data model](docs/ARCHITECTURE.md)
+- [Maintenance guide](docs/MAINTENANCE.md)
+- [Testing and release checklist](docs/RELEASE_CHECKLIST.md)
+- [Changelog](CHANGELOG.md)
+
+## Project Structure
 
 ```text
-tab-atlas/
-├── manifest.json          # 扩展声明、版本和权限
-├── background.js          # 点击扩展图标、页面元数据存储
-├── content-script.js      # 读取网页自身的标题、摘要和站点信息
-├── dashboard.html         # 管理页面结构
-├── dashboard.css          # 浅色/深色主题和响应式视觉
-├── dashboard.js           # 标签页、待处理、收藏和交互逻辑
-├── docs/                  # 产品、设计、技术和维护资料
-├── CHANGELOG.md           # 每个版本的修改记录
-└── README.md              # 项目入口
+tabloom/
+├── manifest.json          # Extension manifest, version, and permissions
+├── background.js          # Toolbar action and page metadata storage
+├── content-script.js      # Reads public page metadata for summaries
+├── dashboard.html         # Dashboard structure
+├── dashboard.css          # Responsive layout and Light/Dark themes
+├── dashboard.js           # Tab management, collections, and interactions
+├── docs/                  # Product, design, technical, and maintenance docs
+├── CHANGELOG.md           # Version history
+└── README.md              # Project overview
 ```
 
-## 隐私与权限
+## Privacy and Permissions
 
-- `tabs`：读取标签页标题和 URL，以及切换或关闭标签页。
-- `storage`：在本地保存 For Later、Saved、主题和折叠状态。
-- `<all_urls>`：读取网页公开的标题、favicon、站点名称和 description 元数据，用于形成摘要；不会读取表单内容，也不会上传数据。
+Tabloom is local-first and does not upload browsing data.
 
-Chrome 内部页面（例如 `chrome://settings`）禁止内容脚本运行，因此这类页面的摘要只能使用 URL 信息。关闭标签页后的撤销会重新打开对应 URL，但无法恢复原标签页的前进/后退历史。
+- `tabs` allows Tabloom to read tab titles and URLs, focus existing tabs, and close tabs.
+- `storage` keeps For Later, Saved, theme, sound, and collapsed-section preferences in the browser's local storage.
+- `<all_urls>` allows Tabloom to read publicly available page metadata such as the title, favicon, site name, and description. It does not read form fields or upload page data.
+
+Protected browser pages such as `chrome://settings` do not allow content scripts, so their summaries may fall back to URL information.
+
+Undoing a closed tab reopens its URL, but the browser cannot restore the original tab's back/forward history, scroll position, or form state.
+
+## Development
+
+Tabloom uses native HTML, CSS, and JavaScript with Chrome Extension Manifest V3. It has no build step and no third-party runtime dependencies.
+
+After changing the source files:
+
+1. Open the browser's extensions page.
+2. Click **Reload** on the Tabloom extension card.
+3. Refresh the open Tabloom dashboard.
+4. If `content-script.js` changed, refresh the ordinary webpages used for testing as well.

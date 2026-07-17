@@ -38,6 +38,7 @@ Tabloom does not require an account or backend server, and it does not send your
 
 The following maintainer documents are currently written in Chinese:
 
+- [Reusable browser extension product development SOP](docs/PLUGIN_DEVELOPMENT_SOP.md)
 - [Product and interaction specification](docs/PRODUCT_SPEC.md)
 - [Visual design and copy guidelines](docs/DESIGN_SYSTEM.md)
 - [Technical architecture and data model](docs/ARCHITECTURE.md)
@@ -55,7 +56,7 @@ tabloom/
 ├── dashboard.html         # Dashboard structure
 ├── dashboard.css          # Responsive layout and Light/Dark themes
 ├── dashboard.js           # Tab management, collections, and interactions
-├── docs/                  # Product, design, technical, and maintenance docs
+├── docs/                  # SOP, product, design, technical, and maintenance docs
 ├── CHANGELOG.md           # Version history
 └── README.md              # Project overview
 ```

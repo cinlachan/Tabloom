@@ -28,6 +28,7 @@ const state = {
   query: "",
   theme: "system",
   sound: "subtle",
+  expandedGroups: new Set(),
   undo: { later: null, open: null, saved: null }
 };
 
@@ -35,7 +36,7 @@ const refs = {
   search: document.querySelector("#search"),
   theme: document.querySelector("#theme"),
   sound: document.querySelector("#sound"),
-  cursorEffects: document.querySelector("#cursor-effects"),
+  clickSparkCanvas: document.querySelector("#click-spark-canvas"),
   toast: document.querySelector("#toast"),
   emptySearch: document.querySelector("#empty-search"),
   dialog: document.querySelector("#confirm-dialog"),
@@ -47,6 +48,17 @@ const refs = {
 let audioContext;
 let lastSoundAt = 0;
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+const clickSpark = {
+  sparkSize: 8,
+  sparkRadius: 22,
+  sparkCount: 8,
+  duration: 420,
+  extraScale: 1.1,
+  sparks: [],
+  animationId: 0,
+  context: null,
+  pixelRatio: 1
+};
 
 function getAudioContext() {
   if (!audioContext) {
@@ -143,40 +155,77 @@ function cursorEffectKind(target) {
   return "neutral";
 }
 
-function emitCursorEffect(event, kind) {
-  if (reduceMotion.matches || !refs.cursorEffects) return;
-  const target = event.target.closest("button, select");
+function resizeClickSparkCanvas() {
+  const canvas = refs.clickSparkCanvas;
+  if (!canvas) return;
+  clickSpark.pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.round(window.innerWidth * clickSpark.pixelRatio);
+  canvas.height = Math.round(window.innerHeight * clickSpark.pixelRatio);
+  clickSpark.context = canvas.getContext("2d");
+  clickSpark.context?.setTransform(clickSpark.pixelRatio, 0, 0, clickSpark.pixelRatio, 0, 0);
+}
+
+function clickSparkColor(kind) {
+  const variable = {
+    close: "--danger",
+    complete: "--accent",
+    save: "--accent-strong",
+    undo: "--violet",
+    neutral: "--accent"
+  }[kind] || "--accent";
+  return getComputedStyle(document.documentElement).getPropertyValue(variable).trim() || "#84cc16";
+}
+
+function drawClickSparks(timestamp) {
+  const context = clickSpark.context;
+  if (!context) return;
+  context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  clickSpark.sparks = clickSpark.sparks.filter((spark) => {
+    const elapsed = timestamp - spark.startTime;
+    if (elapsed >= clickSpark.duration) return false;
+    const progress = elapsed / clickSpark.duration;
+    const eased = progress * (2 - progress);
+    const distance = eased * clickSpark.sparkRadius * clickSpark.extraScale;
+    const lineLength = clickSpark.sparkSize * (1 - eased);
+    const x1 = spark.x + distance * Math.cos(spark.angle);
+    const y1 = spark.y + distance * Math.sin(spark.angle);
+    const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
+    const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+    context.save();
+    context.globalAlpha = Math.max(0, 1 - progress * .72);
+    context.strokeStyle = spark.color;
+    context.lineWidth = 2;
+    context.lineCap = "round";
+    context.shadowColor = spark.color;
+    context.shadowBlur = 5 * (1 - progress);
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
+    context.restore();
+    return true;
+  });
+  if (clickSpark.sparks.length) clickSpark.animationId = requestAnimationFrame(drawClickSparks);
+  else clickSpark.animationId = 0;
+}
+
+function emitClickSpark(event, kind) {
+  if (reduceMotion.matches || !refs.clickSparkCanvas) return;
+  const target = event.target instanceof Element ? event.target.closest("button, a, select, .page-main") : null;
   const rect = target?.getBoundingClientRect();
   const x = event.clientX || (rect ? rect.left + rect.width / 2 : 0);
   const y = event.clientY || (rect ? rect.top + rect.height / 2 : 0);
-  const colors = {
-    close: "var(--danger)",
-    complete: "var(--accent)",
-    save: "var(--accent-strong)",
-    undo: "var(--violet)",
-    neutral: "var(--muted)"
-  };
-  const burst = document.createElement("span");
-  burst.className = `cursor-burst is-${kind}`;
-  burst.style.setProperty("--fx-x", `${x}px`);
-  burst.style.setProperty("--fx-y", `${y}px`);
-  burst.style.setProperty("--fx-color", colors[kind] || colors.neutral);
-  const ring = document.createElement("i");
-  ring.className = "cursor-ring";
-  burst.append(ring);
-  const dotCount = kind === "neutral" ? 3 : 6;
-  for (let index = 0; index < dotCount; index += 1) {
-    const angle = (Math.PI * 2 * index) / dotCount - Math.PI / 2;
-    const distance = kind === "close" ? 21 + (index % 2) * 7 : 18 + (index % 2) * 5;
-    const dot = document.createElement("i");
-    dot.className = "cursor-dot";
-    dot.style.setProperty("--dot-x", `${Math.cos(angle) * distance}px`);
-    dot.style.setProperty("--dot-y", `${Math.sin(angle) * distance}px`);
-    dot.style.animationDelay = `${index * 12}ms`;
-    burst.append(dot);
-  }
-  refs.cursorEffects.append(burst);
-  setTimeout(() => burst.remove(), 650);
+  const startTime = performance.now();
+  const color = clickSparkColor(kind);
+  const newSparks = Array.from({ length: clickSpark.sparkCount }, (_, index) => ({
+    x,
+    y,
+    color,
+    angle: (Math.PI * 2 * index) / clickSpark.sparkCount - Math.PI / 2,
+    startTime
+  }));
+  clickSpark.sparks.push(...newSparks);
+  if (!clickSpark.animationId) clickSpark.animationId = requestAnimationFrame(drawClickSparks);
 }
 
 function effectDelay(milliseconds) {
@@ -427,6 +476,9 @@ function renderSection(section, items) {
 }
 
 function createSiteCard(section, groupKey, items) {
+  const expansionKey = `${section}:${groupKey}`;
+  const isExpanded = state.expandedGroups.has(expansionKey);
+  const visibleItems = isExpanded ? items : items.slice(0, 4);
   const card = document.createElement("article");
   card.className = "site-card";
   const header = document.createElement("header");
@@ -458,12 +510,28 @@ function createSiteCard(section, groupKey, items) {
 
   const list = document.createElement("ul");
   list.className = "page-list";
-  items.forEach((item) => list.append(createPageRow(section, item)));
+  visibleItems.forEach((item) => list.append(createPageRow(section, item)));
 
   const footer = document.createElement("footer");
   footer.className = "card-footer";
-  const label = document.createElement("span");
-  label.textContent = `${items.length} page${items.length === 1 ? "" : "s"}`;
+  let footerLead;
+  if (items.length > 4) {
+    const expand = document.createElement("button");
+    expand.type = "button";
+    expand.className = "card-expand";
+    expand.setAttribute("aria-expanded", String(isExpanded));
+    expand.textContent = isExpanded ? "Show less" : `+ ${items.length - 4} more`;
+    expand.addEventListener("click", () => {
+      if (isExpanded) state.expandedGroups.delete(expansionKey);
+      else state.expandedGroups.add(expansionKey);
+      render();
+    });
+    footerLead = expand;
+  } else {
+    const label = document.createElement("span");
+    label.textContent = `${items.length} page${items.length === 1 ? "" : "s"}`;
+    footerLead = label;
+  }
   const action = document.createElement("button");
   action.type = "button";
   action.className = "site-action";
@@ -473,7 +541,7 @@ function createSiteCard(section, groupKey, items) {
     const soundName = section === "later" ? "complete" : section === "open" ? "close" : "close";
     animateAndRun(card, "is-site-exiting", soundName, 270, () => actOnSite(section, groupKey, items));
   });
-  footer.append(label, action);
+  footer.append(footerLead, action);
   card.append(header, list, footer);
   return card;
 }
@@ -660,6 +728,8 @@ function showToast(message) {
 }
 
 function bindEvents() {
+  resizeClickSparkCanvas();
+  window.addEventListener("resize", resizeClickSparkCanvas, { passive: true });
   document.addEventListener("pointerdown", () => {
     if (state.sound === "off") return;
     const ctx = getAudioContext();
@@ -667,9 +737,9 @@ function bindEvents() {
   }, { passive: true });
   document.addEventListener("click", (event) => {
     const target = event.target instanceof Element
-      ? event.target.closest(".row-action, .site-action, .bulk-button, .undo, .collapse")
+      ? event.target.closest("button, a, select, .page-main")
       : null;
-    if (target) emitCursorEffect(event, cursorEffectKind(target));
+    if (target) emitClickSpark(event, cursorEffectKind(target));
   }, true);
   refs.search.addEventListener("input", (event) => {
     state.query = event.target.value;

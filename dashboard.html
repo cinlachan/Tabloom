@@ -78,6 +78,16 @@
             <button class="icon-button undo" data-undo="open" type="button" aria-label="Undo last action" data-tooltip="Undo" hidden>
               <svg><use href="#undo-icon"></use></svg>
             </button>
+            <label class="sort-control">
+              <span>Sort</span>
+              <select id="open-sort" aria-label="Sort open tab groups">
+                <option value="manual">Manual order</option>
+                <option value="count">Most tabs</option>
+                <option value="recent">Recently active</option>
+                <option value="name">Site name</option>
+              </select>
+            </label>
+            <button id="reset-open-order" class="secondary-button" type="button">Reset order</button>
             <button id="close-all" class="bulk-button danger" type="button"><svg><use href="#close-circle-icon"></use></svg>Close all</button>
           </div>
         </header>

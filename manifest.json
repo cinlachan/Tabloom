@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tabloom",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Organize open tabs, keep pages for later, and save what matters.",
   "permissions": ["tabs", "storage"],
   "host_permissions": ["<all_urls>"],

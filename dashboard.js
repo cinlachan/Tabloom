@@ -28,6 +28,10 @@ const state = {
   query: "",
   theme: "system",
   sound: "subtle",
+  openSort: "manual",
+  openOrder: [],
+  draggedGroup: null,
+  pointerDrag: null,
   expandedGroups: new Set(),
   undo: { later: null, open: null, saved: null }
 };
@@ -36,6 +40,8 @@ const refs = {
   search: document.querySelector("#search"),
   theme: document.querySelector("#theme"),
   sound: document.querySelector("#sound"),
+  openSort: document.querySelector("#open-sort"),
+  resetOpenOrder: document.querySelector("#reset-open-order"),
   clickSparkCanvas: document.querySelector("#click-spark-canvas"),
   toast: document.querySelector("#toast"),
   emptySearch: document.querySelector("#empty-search"),
@@ -378,7 +384,9 @@ async function storageGet() {
       saved: [snapshot({ ...demoTabs[3], summary: demoMeta[104].summary, siteName: "Figma" })],
       collapsed: state.collapsed,
       theme: "system",
-      sound: "subtle"
+      sound: "subtle",
+      openSort: "manual",
+      openOrder: []
     };
   }
   return chrome.storage.local.get(null);
@@ -386,7 +394,15 @@ async function storageGet() {
 
 async function saveCollections() {
   if (!isExtension) return;
-  await chrome.storage.local.set({ later: state.later, saved: state.saved, collapsed: state.collapsed, theme: state.theme, sound: state.sound });
+  await chrome.storage.local.set({
+    later: state.later,
+    saved: state.saved,
+    collapsed: state.collapsed,
+    theme: state.theme,
+    sound: state.sound,
+    openSort: state.openSort,
+    openOrder: state.openOrder
+  });
 }
 
 async function loadData({ quiet = false } = {}) {
@@ -401,12 +417,15 @@ async function loadData({ quiet = false } = {}) {
   state.collapsed = { ...state.collapsed, ...(stored.collapsed || {}) };
   state.theme = stored.theme || "system";
   state.sound = stored.sound || "subtle";
+  state.openSort = ["manual", "count", "recent", "name"].includes(stored.openSort) ? stored.openSort : "manual";
+  state.openOrder = Array.isArray(stored.openOrder) ? stored.openOrder.filter((key) => typeof key === "string") : [];
   state.meta = isExtension
     ? Object.fromEntries(Object.entries(stored).filter(([key]) => key.startsWith("meta:")).map(([, value]) => [value.tabId, value]))
     : demoMeta;
 
   refs.theme.value = state.theme;
   refs.sound.value = state.sound;
+  refs.openSort.value = state.openSort;
   applyTheme();
   render();
   if (!quiet) showToast("Tabs refreshed");
@@ -472,7 +491,91 @@ function renderSection(section, items) {
     return;
   }
 
-  groupItems(items).forEach((group, groupKey) => container.append(createSiteCard(section, groupKey, group)));
+  const groups = [...groupItems(items).entries()];
+  const orderedGroups = section === "open" ? sortOpenGroups(groups) : groups;
+  orderedGroups.forEach(([groupKey, group]) => container.append(createSiteCard(section, groupKey, group)));
+}
+
+function sortOpenGroups(groups) {
+  if (state.openSort === "count") {
+    return [...groups].sort((a, b) => b[1].length - a[1].length || siteNameFor(a[1][0]).localeCompare(siteNameFor(b[1][0])));
+  }
+  if (state.openSort === "recent") {
+    const latest = (items) => Math.max(...items.map((item) => item.lastAccessed || 0));
+    return [...groups].sort((a, b) => latest(b[1]) - latest(a[1]));
+  }
+  if (state.openSort === "name") {
+    return [...groups].sort((a, b) => siteNameFor(a[1][0]).localeCompare(siteNameFor(b[1][0]), undefined, { sensitivity: "base" }));
+  }
+  const positions = new Map(state.openOrder.map((key, index) => [key, index]));
+  return [...groups].sort((a, b) => {
+    const aPosition = positions.has(a[0]) ? positions.get(a[0]) : Number.MAX_SAFE_INTEGER;
+    const bPosition = positions.has(b[0]) ? positions.get(b[0]) : Number.MAX_SAFE_INTEGER;
+    return aPosition - bPosition;
+  });
+}
+
+function visibleOpenGroupKeys() {
+  return [...document.querySelectorAll('#open-content .site-card[data-group-key]')].map((card) => card.dataset.groupKey);
+}
+
+async function saveOpenOrder(keys, feedback = "Order updated") {
+  state.openOrder = [...new Set([...keys, ...state.openOrder])];
+  state.openSort = "manual";
+  refs.openSort.value = "manual";
+  await saveCollections();
+  render();
+  setFeedback("open", feedback);
+  playSound("fold");
+}
+
+function moveOpenGroup(sourceKey, targetKey) {
+  if (!sourceKey || !targetKey || sourceKey === targetKey || state.query) return;
+  const keys = visibleOpenGroupKeys();
+  const sourceIndex = keys.indexOf(sourceKey);
+  const targetIndex = keys.indexOf(targetKey);
+  if (sourceIndex < 0 || targetIndex < 0) return;
+  keys.splice(sourceIndex, 1);
+  const insertionIndex = keys.indexOf(targetKey) + (sourceIndex < targetIndex ? 1 : 0);
+  keys.splice(insertionIndex, 0, sourceKey);
+  saveOpenOrder(keys);
+}
+
+function moveOpenGroupByStep(groupKey, direction) {
+  if (state.query) return;
+  const keys = visibleOpenGroupKeys();
+  const index = keys.indexOf(groupKey);
+  const nextIndex = Math.max(0, Math.min(keys.length - 1, index + direction));
+  if (index < 0 || nextIndex === index) return;
+  keys.splice(index, 1);
+  keys.splice(nextIndex, 0, groupKey);
+  saveOpenOrder(keys, `Moved to position ${nextIndex + 1}`);
+}
+
+function updatePointerDrag(event) {
+  const drag = state.pointerDrag;
+  if (!drag || drag.pointerId !== event.pointerId) return;
+  const distance = Math.hypot(event.clientX - drag.startX, event.clientY - drag.startY);
+  if (!state.draggedGroup && distance < 6) return;
+  if (!state.draggedGroup) {
+    state.draggedGroup = drag.sourceKey;
+    document.querySelector(`#open-content .site-card[data-group-key="${CSS.escape(drag.sourceKey)}"]`)?.classList.add("is-dragging");
+    document.body.classList.add("is-reordering");
+  }
+  const target = document.elementFromPoint(event.clientX, event.clientY)?.closest("#open-content .site-card");
+  document.querySelectorAll("#open-content .site-card").forEach((item) => item.classList.toggle("is-drop-target", item === target && item.dataset.groupKey !== drag.sourceKey));
+  drag.targetKey = target?.dataset.groupKey || null;
+}
+
+function finishPointerDrag(event) {
+  const drag = state.pointerDrag;
+  if (!drag || drag.pointerId !== event.pointerId) return;
+  const targetKey = drag.targetKey;
+  state.pointerDrag = null;
+  state.draggedGroup = null;
+  document.body.classList.remove("is-reordering");
+  document.querySelectorAll("#open-content .site-card").forEach((item) => item.classList.remove("is-dragging", "is-drop-target"));
+  if (targetKey) moveOpenGroup(drag.sourceKey, targetKey);
 }
 
 function createSiteCard(section, groupKey, items) {
@@ -481,8 +584,31 @@ function createSiteCard(section, groupKey, items) {
   const visibleItems = isExpanded ? items : items.slice(0, 4);
   const card = document.createElement("article");
   card.className = "site-card";
+  card.dataset.groupKey = groupKey;
   const header = document.createElement("header");
   header.className = "site-card-header";
+
+  if (section === "open") {
+    const handle = document.createElement("button");
+    handle.type = "button";
+    handle.className = "drag-handle";
+    handle.disabled = Boolean(state.query);
+    handle.setAttribute("aria-label", `Move ${siteNameFor(items[0])} card`);
+    handle.setAttribute("data-tooltip", state.query ? "Clear search to reorder" : "Drag to reorder · Arrow keys also work");
+    handle.innerHTML = "<i></i><i></i><i></i><i></i><i></i><i></i>";
+    handle.addEventListener("pointerdown", (event) => {
+      if (state.query || event.button !== 0) return;
+      event.preventDefault();
+      state.pointerDrag = { sourceKey: groupKey, targetKey: null, pointerId: event.pointerId, startX: event.clientX, startY: event.clientY };
+    });
+    handle.addEventListener("keydown", (event) => {
+      const directions = { ArrowLeft: -1, ArrowUp: -1, ArrowRight: 1, ArrowDown: 1 };
+      if (!(event.key in directions)) return;
+      event.preventDefault();
+      moveOpenGroupByStep(groupKey, directions[event.key]);
+    });
+    header.append(handle);
+  }
 
   const favicon = document.createElement("span");
   favicon.className = "site-favicon";
@@ -730,6 +856,9 @@ function showToast(message) {
 function bindEvents() {
   resizeClickSparkCanvas();
   window.addEventListener("resize", resizeClickSparkCanvas, { passive: true });
+  document.addEventListener("pointermove", updatePointerDrag);
+  document.addEventListener("pointerup", finishPointerDrag);
+  document.addEventListener("pointercancel", finishPointerDrag);
   document.addEventListener("pointerdown", () => {
     if (state.sound === "off") return;
     const ctx = getAudioContext();
@@ -755,6 +884,20 @@ function bindEvents() {
     await saveCollections();
     if (state.sound !== "off") playSound("save", { preview: true });
     showToast(state.sound === "off" ? "Sounds off" : `${event.target.selectedOptions[0].text} sounds on`);
+  });
+  refs.openSort.addEventListener("change", async (event) => {
+    state.openSort = event.target.value;
+    await saveCollections();
+    render();
+    showToast(`${event.target.selectedOptions[0].text} applied`);
+  });
+  refs.resetOpenOrder.addEventListener("click", async () => {
+    state.openOrder = [];
+    state.openSort = "manual";
+    refs.openSort.value = "manual";
+    await saveCollections();
+    render();
+    showToast("Manual order reset");
   });
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
     if (state.theme === "system") applyTheme();

@@ -25,6 +25,7 @@ Tabloom does not require an account or backend server, and it does not send your
 - **Open Tabs** groups tabs from every browser window by website.
 - **Saved** keeps pages that are worth returning to over the long term.
 - Click a page to switch to its existing tab or reopen it if the tab has already been closed.
+- Reorder Open Tabs site cards with the six-dot drag handle or arrow keys, or sort them by tab count, recent activity, or site name.
 - Manage individual pages, entire website groups, or use `Complete all`, `Close all`, and `Remove all`.
 - Search across page titles, summaries, website names, and URLs.
 - Collapse each section independently.

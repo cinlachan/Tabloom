@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Tabloom",
+  "version": "2.9.2",
+  "description": "Organize open tabs, keep pages for later, and save what matters.",
+  "permissions": ["tabs", "storage", "contextMenus", "sessions", "scripting", "alarms", "notifications"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Open Tabloom",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+Shift+T" },
+      "description": "Open Tabloom"
+    },
+    "keep-for-later": {
+      "suggested_key": { "default": "Alt+Shift+L" },
+      "description": "Keep the current page for later"
+    },
+    "save-page": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "Save the current page"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

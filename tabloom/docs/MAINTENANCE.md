@@ -67,11 +67,11 @@ chrome.storage.local.get(null).then(console.log)
 
 ## 7. 打包
 
-本地安装永远选择 `tab-atlas` 文件夹。用于归档或交付时，在项目上一级目录运行：
+本地安装永远选择 `tabloom` 文件夹。用于归档或交付时，在项目上一级目录运行：
 
 ```bash
-zip -rFS tab-atlas.zip tab-atlas -x '*.DS_Store'
-unzip -t tab-atlas.zip
+zip -rFS tabloom-<版本>.zip tabloom -x '*.DS_Store'
+unzip -t tabloom-<版本>.zip
 ```
 
 第一条命令更新压缩包，第二条检查压缩包是否损坏。Chrome Web Store 上传的是 ZIP，开发者模式加载的是文件夹。

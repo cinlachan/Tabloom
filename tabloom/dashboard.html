@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Tabloom</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png" />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="#top" data-i18n-label="brand.home" aria-label="Tabloom home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" data-bloom="open"><defs><radialGradient id="tb-h-a" cx="50%" cy="85%" r="85%"><stop offset="0" stop-color="#ffb347"/><stop offset=".6" stop-color="#ff8452"/><stop offset="1" stop-color="#ff6a5a"/></radialGradient><radialGradient id="tb-h-b" cx="50%" cy="85%" r="85%"><stop offset="0" stop-color="#ff9a76"/><stop offset=".6" stop-color="#f6607e"/><stop offset="1" stop-color="#e94a86"/></radialGradient></defs><g stroke="none"><rect width="32" height="32" rx="8" fill="#6c3ad6"/><g class="bloom-flower"><path class="bloom-petal" d="M13.31 0.74C13.89 0.69 14.57 0.97 15.14 1.33C15.71 1.69 16.30 2.23 16.75 2.89C17.20 3.55 17.56 4.45 17.81 5.28C18.07 6.11 18.21 7.04 18.29 7.89C18.38 8.75 18.45 9.67 18.32 10.41C18.19 11.16 17.87 11.80 17.50 12.36C17.13 12.92 16.68 13.54 16.12 13.78C15.55 14.02 14.74 14.16 14.13 13.79C13.52 13.42 12.91 12.35 12.45 11.56C11.99 10.78 11.64 9.91 11.37 9.08C11.10 8.25 10.96 7.46 10.85 6.59C10.73 5.71 10.56 4.66 10.69 3.83C10.82 3.00 11.20 2.13 11.64 1.61C12.07 1.10 12.73 0.78 13.31 0.74Z" fill="url(#tb-h-a)"/><path class="bloom-petal" d="M27.22 10.53C27.53 10.93 27.86 11.50 27.74 12.04C27.62 12.57 27.00 13.27 26.50 13.75C25.99 14.24 25.32 14.61 24.72 14.95C24.12 15.30 23.55 15.62 22.90 15.82C22.25 16.02 21.54 16.11 20.83 16.15C20.13 16.18 19.21 16.27 18.66 16.04C18.11 15.82 17.70 15.28 17.54 14.80C17.38 14.32 17.53 13.69 17.71 13.17C17.90 12.64 18.25 12.12 18.66 11.66C19.08 11.20 19.64 10.80 20.22 10.42C20.80 10.05 21.50 9.61 22.15 9.43C22.80 9.25 23.51 9.30 24.13 9.34C24.75 9.37 25.36 9.44 25.88 9.64C26.39 9.84 26.91 10.13 27.22 10.53Z" fill="url(#tb-h-b)"/><path class="bloom-petal" d="M25.13 26.88C24.59 27.09 23.95 27.06 23.35 27.05C22.74 27.04 22.15 27.04 21.50 26.84C20.85 26.64 20.06 26.34 19.42 25.84C18.78 25.35 18.16 24.59 17.66 23.89C17.16 23.20 16.67 22.41 16.43 21.68C16.18 20.95 16.09 20.13 16.20 19.51C16.31 18.88 16.63 18.25 17.10 17.93C17.56 17.61 18.33 17.54 19.01 17.60C19.68 17.66 20.46 17.98 21.15 18.30C21.83 18.61 22.46 19.03 23.13 19.49C23.80 19.95 24.62 20.39 25.18 21.05C25.74 21.71 26.26 22.66 26.50 23.45C26.73 24.24 26.80 25.20 26.57 25.78C26.35 26.35 25.67 26.67 25.13 26.88Z" fill="url(#tb-h-a)"/><path class="bloom-petal" d="M9.56 25.92C9.15 25.68 8.78 25.27 8.58 24.79C8.37 24.31 8.28 23.65 8.34 23.03C8.40 22.41 8.59 21.64 8.92 21.05C9.25 20.47 9.83 19.94 10.32 19.52C10.81 19.10 11.34 18.84 11.88 18.54C12.42 18.24 12.99 17.85 13.55 17.72C14.10 17.59 14.80 17.53 15.22 17.75C15.64 17.98 15.97 18.54 16.09 19.07C16.21 19.59 16.10 20.32 15.95 20.92C15.80 21.52 15.49 22.13 15.17 22.69C14.86 23.24 14.47 23.74 14.06 24.26C13.64 24.78 13.19 25.46 12.69 25.79C12.18 26.11 11.55 26.18 11.03 26.20C10.51 26.22 9.97 26.15 9.56 25.92Z" fill="url(#tb-h-b)"/><path class="bloom-petal" d="M2.26 12.57C2.51 12.09 2.94 11.64 3.46 11.35C3.98 11.06 4.73 10.98 5.40 10.83C6.06 10.67 6.66 10.48 7.44 10.43C8.22 10.38 9.23 10.33 10.07 10.53C10.91 10.73 11.90 11.16 12.48 11.63C13.05 12.09 13.42 12.78 13.51 13.32C13.61 13.86 13.25 14.36 13.06 14.85C12.86 15.35 12.74 15.86 12.35 16.27C11.95 16.69 11.37 17.15 10.68 17.37C9.99 17.58 9.03 17.61 8.21 17.55C7.39 17.49 6.53 17.28 5.77 16.99C5.01 16.71 4.26 16.31 3.63 15.85C3.00 15.39 2.22 14.80 1.99 14.25C1.76 13.71 2.02 13.06 2.26 12.57Z" fill="url(#tb-h-a)"/><path d="M17.26 12.44C17.85 12.72 18.29 13.35 18.68 13.84C19.08 14.32 19.46 14.82 19.64 15.37C19.81 15.93 19.89 16.62 19.74 17.18C19.59 17.74 19.19 18.34 18.73 18.73C18.28 19.12 17.61 19.40 16.98 19.52C16.35 19.65 15.59 19.68 14.96 19.49C14.34 19.30 13.66 18.87 13.24 18.39C12.83 17.92 12.58 17.23 12.47 16.64C12.37 16.05 12.45 15.44 12.60 14.86C12.75 14.28 12.94 13.62 13.37 13.16C13.79 12.71 14.48 12.24 15.13 12.12C15.78 11.99 16.67 12.15 17.26 12.44Z" fill="#ffd166"/><path d="M17.26 12.44C17.85 12.72 18.29 13.35 18.68 13.84C19.08 14.32 19.46 14.82 19.64 15.37C19.81 15.93 19.89 16.62 19.74 17.18C19.59 17.74 19.19 18.34 18.73 18.73C18.28 19.12 17.61 19.40 16.98 19.52C16.35 19.65 15.59 19.68 14.96 19.49C14.34 19.30 13.66 18.87 13.24 18.39C12.83 17.92 12.58 17.23 12.47 16.64C12.37 16.05 12.45 15.44 12.60 14.86C12.75 14.28 12.94 13.62 13.37 13.16C13.79 12.71 14.48 12.24 15.13 12.12C15.78 11.99 16.67 12.15 17.26 12.44Z" fill="none" stroke="#e8902a" stroke-width=".7"/><ellipse cx="14.8" cy="14.7" rx="1.1" ry=".85" transform="rotate(-25 14.8 14.7)" fill="#fff3c4"/></g><g class="bloom-extra"><path d="M26.41 2.62 26.60 5.24 28.39 5.84 26.52 6.05 25.82 8.29 25.60 5.97 24.01 5.38 25.69 5.13Z" fill="#ffe2a8" stroke="#ffe2a8" stroke-width=".35" stroke-linejoin="round"/><ellipse cx="6.1" cy="26.5" rx="1.0" ry=".85" fill="#ffb3c7"/></g></g></svg>
+        <span><strong>Tabloom</strong><small data-i18n="brand.tagline">Keep tabs clear. Save what matters.</small></span>
+      </a>
+      <label class="search-box">
+        <svg aria-hidden="true"><use href="#search-icon"></use></svg>
+        <input id="search" type="search" data-i18n-placeholder="search.placeholder" placeholder="Filter pages on this dashboard…" autocomplete="off" aria-keyshortcuts="/" />
+        <kbd data-keymap="filter">/</kbd>
+      </label>
+      <div class="header-actions">
+        <button class="jump-button" id="open-palette" type="button" aria-keyshortcuts="Meta+K Control+K" aria-haspopup="dialog">
+          <svg aria-hidden="true"><use href="#command-icon"></use></svg>
+          <span data-i18n="action.jump">Jump to</span>
+          <kbd data-keymap="palette">⌘K</kbd>
+        </button>
+        <button class="icon-button" id="open-settings" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="settings" data-i18n-label="settings.open" data-i18n-tooltip="settings.open" aria-label="Settings" data-tooltip="Settings">
+          <svg><use href="#settings-icon"></use></svg>
+        </button>
+      </div>
+
+      <div id="settings" class="settings" role="dialog" aria-labelledby="settings-title" hidden>
+        <h2 id="settings-title" class="settings-heading" data-i18n="settings.title">Settings</h2>
+        <div class="settings-row">
+          <span class="settings-label" id="theme-label" data-i18n="theme.label">Theme</span>
+          <div class="segmented" data-setting="theme" role="radiogroup" aria-labelledby="theme-label">
+            <button type="button" role="radio" data-value="system" data-i18n="theme.system">System</button>
+            <button type="button" role="radio" data-value="light" data-i18n="theme.light">Light</button>
+            <button type="button" role="radio" data-value="dark" data-i18n="theme.dark">Dark</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label" id="sound-label" data-i18n="sound.label">Sound</span>
+          <div class="segmented" data-setting="sound" role="radiogroup" aria-labelledby="sound-label">
+            <button type="button" role="radio" data-value="off" data-i18n="sound.off">Off</button>
+            <button type="button" role="radio" data-value="subtle" data-i18n="sound.subtle">Subtle</button>
+            <button type="button" role="radio" data-value="playful" data-i18n="sound.playful">Playful</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label" id="language-label" data-i18n="language.label">Language</span>
+          <div class="segmented" data-setting="language" role="radiogroup" aria-labelledby="language-label">
+            <button type="button" role="radio" data-value="system" data-i18n="language.system">System</button>
+            <button type="button" role="radio" data-value="en" data-i18n="language.en">English</button>
+            <button type="button" role="radio" data-value="zh" data-i18n="language.zh">中文</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label" id="sleep-label" data-i18n="autoSleep.label">Auto-sleep</span>
+          <div class="segmented" data-setting="autoSleep" role="radiogroup" aria-labelledby="sleep-label">
+            <button type="button" role="radio" data-value="off" data-i18n="autoSleep.off">Off</button>
+            <button type="button" role="radio" data-value="60" data-i18n="autoSleep.60">1 h idle</button>
+            <button type="button" role="radio" data-value="240" data-i18n="autoSleep.240">4 h idle</button>
+          </div>
+        </div>
+        <p class="settings-note" data-i18n="autoSleep.note">Sleeping tabs stay in place and free memory; click one to wake it.</p>
+
+        <div class="settings-section" id="settings-shortcuts">
+          <div class="settings-subhead">
+            <h3 data-i18n="shortcuts.page">Shortcuts on this page</h3>
+            <button type="button" class="text-button" id="reset-keymap" data-i18n="shortcuts.reset">Reset</button>
+          </div>
+          <ul class="shortcut-list" id="keymap-list"></ul>
+          <p class="settings-note" id="keymap-hint" aria-live="polite" data-i18n="shortcuts.editHint">Click a shortcut to change it.</p>
+        </div>
+        <div class="settings-section">
+          <div class="settings-subhead">
+            <h3 data-i18n="shortcuts.browser">Browser-wide shortcuts</h3>
+            <button type="button" class="text-button" id="open-browser-shortcuts"><span data-i18n="shortcuts.change">Change</span><svg aria-hidden="true"><use href="#external-icon"></use></svg></button>
+          </div>
+          <ul class="shortcut-list" id="browser-shortcut-list"></ul>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="workspace">
+      <section class="module" data-section="later">
+        <header class="module-header">
+          <button class="collapse" type="button" aria-expanded="true" aria-controls="later-content">
+            <svg><use href="#chevron-icon"></use></svg>
+          </button>
+          <span class="section-icon later-icon"><svg><use href="#clock-icon"></use></svg></span>
+          <div class="module-title">
+            <div><h2 data-i18n="section.later">For Later</h2><span id="later-count" class="count">0</span></div>
+            <p id="later-summary" data-i18n="section.later.blurb">Pages you set aside stay here—even after the tab is closed.</p>
+          </div>
+          <div class="module-actions">
+            <button id="stash-window" class="text-button stash-trigger" type="button" aria-haspopup="menu" aria-expanded="false"><svg aria-hidden="true"><use href="#stash-icon"></use></svg><span data-i18n="stash.entry">Stash a window</span></button>
+            <button class="undo-chip" data-undo="later" type="button" data-i18n-label="action.undoLast" aria-label="Undo last action" hidden><svg aria-hidden="true"><use href="#undo-icon"></use></svg><span data-i18n="action.undo">Undo</span></button>
+            <button id="complete-all" class="bulk-button" type="button"><svg><use href="#check-icon"></use></svg><span data-i18n="action.completeAll">Complete all</span></button>
+          </div>
+        </header>
+        <div id="later-content" class="module-content"></div>
+      </section>
+
+      <section class="module" data-section="open">
+        <header class="module-header">
+          <button class="collapse" type="button" aria-expanded="true" aria-controls="open-content">
+            <svg><use href="#chevron-icon"></use></svg>
+          </button>
+          <span class="section-icon open-icon"><svg><use href="#tabs-icon"></use></svg></span>
+          <div class="module-title">
+            <div><h2 data-i18n="section.open">Open Tabs</h2><span id="open-count" class="count">0</span></div>
+            <p id="open-summary" data-i18n="section.open.blurb">Tabs currently open across your browser windows.</p>
+          </div>
+          <div class="module-actions">
+            <button id="reset-open-order" class="text-button" type="button" data-i18n="action.resetOrder" hidden>Reset order</button>
+            <label class="sort-control">
+              <svg aria-hidden="true"><use href="#sort-icon"></use></svg>
+              <select id="open-sort" data-i18n-label="sort.label" aria-label="Sort open tab groups">
+                <option value="manual" data-i18n="sort.manual">Manual order</option>
+                <option value="count" data-i18n="sort.count">Most tabs</option>
+                <option value="recent" data-i18n="sort.recent">Recently active</option>
+                <option value="name" data-i18n="sort.name">Site name</option>
+              </select>
+            </label>
+            <button class="undo-chip" data-undo="open" type="button" data-i18n-label="action.undoLast" aria-label="Undo last action" hidden><svg aria-hidden="true"><use href="#undo-icon"></use></svg><span data-i18n="action.undo">Undo</span></button>
+            <button id="close-all" class="bulk-button danger" type="button"><svg><use href="#close-circle-icon"></use></svg><span data-i18n="action.closeAll">Close all</span></button>
+          </div>
+        </header>
+        <div id="open-content" class="module-content"></div>
+      </section>
+
+      <section class="module" data-section="saved">
+        <header class="module-header">
+          <button class="collapse" type="button" aria-expanded="true" aria-controls="saved-content">
+            <svg><use href="#chevron-icon"></use></svg>
+          </button>
+          <span class="section-icon saved-icon"><svg><use href="#bookmark-icon"></use></svg></span>
+          <div class="module-title">
+            <div><h2 data-i18n="section.saved">Saved</h2><span id="saved-count" class="count">0</span></div>
+            <p data-i18n="section.saved.blurb">Pages worth keeping, ready whenever you need them.</p>
+          </div>
+          <div class="module-actions">
+            <button class="undo-chip" data-undo="saved" type="button" data-i18n-label="action.undoLast" aria-label="Undo last action" hidden><svg aria-hidden="true"><use href="#undo-icon"></use></svg><span data-i18n="action.undo">Undo</span></button>
+            <button id="remove-all" class="bulk-button danger" type="button"><svg><use href="#trash-icon"></use></svg><span data-i18n="action.removeAll">Remove all</span></button>
+          </div>
+        </header>
+        <div id="saved-content" class="module-content"></div>
+      </section>
+    </main>
+
+    <div id="empty-search" class="search-empty" hidden>
+      <svg><use href="#search-icon"></use></svg>
+      <h2 data-i18n="search.empty.title">No matching pages</h2>
+      <p data-i18n="search.empty.copy">Try a different title, site, or keyword.</p>
+      <button type="button" id="clear-search" data-i18n="search.clear">Clear search</button>
+    </div>
+
+    <dialog id="confirm-dialog">
+      <form method="dialog">
+        <span class="dialog-icon"><svg><use href="#alert-icon"></use></svg></span>
+        <h2 id="dialog-title" data-i18n="dialog.title">Are you sure?</h2>
+        <p id="dialog-copy"></p>
+        <div class="dialog-actions">
+          <button value="cancel" class="secondary-button" data-i18n="dialog.cancel">Cancel</button>
+          <button value="confirm" id="dialog-confirm" class="confirm-button" data-i18n="dialog.confirm">Confirm</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="palette" class="palette" role="dialog" aria-modal="true" data-i18n-label="palette.aria" aria-label="Jump to a page or run a command" hidden>
+      <div class="palette-panel">
+        <div class="palette-search">
+          <svg aria-hidden="true"><use href="#search-icon"></use></svg>
+          <input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false" data-i18n-placeholder="palette.placeholder" placeholder="Jump to a tab or page…  Type > for commands" />
+          <kbd>esc</kbd>
+        </div>
+        <ul id="palette-list" class="palette-list" role="listbox" data-i18n-label="palette.results" aria-label="Results"></ul>
+        <footer id="palette-hints" class="palette-hints" aria-hidden="true"></footer>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite">
+      <span class="toast-message"></span>
+      <button type="button" class="toast-undo" hidden><span data-i18n="action.undo">Undo</span> <kbd data-keymap="undo">⌘Z</kbd></button>
+    </div>
+    <div id="remind-menu" class="remind-menu" role="menu" aria-haspopup="true" data-i18n-label="remind.menu" aria-label="Remind me" hidden></div>
+
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></symbol>
+      <symbol id="refresh-icon" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7"></path><path d="M20 5v6h-6"></path></symbol>
+      <symbol id="theme-icon" viewBox="0 0 24 24"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"></path><circle cx="12" cy="12" r="4"></circle></symbol>
+      <symbol id="sound-icon" viewBox="0 0 24 24"><path d="M5 10v4h3l4 4V6L8 10H5Z"></path><path d="M16 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12"></path></symbol>
+      <symbol id="globe-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M4 12h16"></path><path d="M12 4a13 13 0 0 1 0 16 13 13 0 0 1 0-16Z"></path></symbol>
+      <symbol id="chevron-icon" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"></path></symbol>
+      <symbol id="clock-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v5l3 2"></path></symbol>
+      <symbol id="tabs-icon" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="2"></rect><path d="M8 6V4h8v2"></path></symbol>
+      <symbol id="bookmark-icon" viewBox="0 0 24 24"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-3-6 3V5a1 1 0 0 1 1-1Z"></path></symbol>
+      <symbol id="undo-icon" viewBox="0 0 24 24"><path d="M9 8 5 12l4 4"></path><path d="M6 12h7a6 6 0 0 1 6 6"></path></symbol>
+      <symbol id="check-icon" viewBox="0 0 24 24"><path d="m6 12 4 4 8-9"></path></symbol>
+      <symbol id="close-circle-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="m9 9 6 6m0-6-6 6"></path></symbol>
+      <symbol id="trash-icon" viewBox="0 0 24 24"><path d="M5 7h14M9 7V4h6v3m2 0-1 13H8L7 7"></path></symbol>
+      <symbol id="external-icon" viewBox="0 0 24 24"><path d="M14 5h5v5m0-5-8 8"></path><path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4"></path></symbol>
+      <symbol id="x-icon" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17"></path></symbol>
+      <symbol id="more-icon" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="19" r="1"></circle></symbol>
+      <symbol id="alert-icon" viewBox="0 0 24 24"><path d="M12 4 3 20h18L12 4Z"></path><path d="M12 9v5m0 3h.01"></path></symbol>
+      <symbol id="command-icon" viewBox="0 0 24 24"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3"></path></symbol>
+      <symbol id="copy-icon" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></symbol>
+      <symbol id="settings-icon" viewBox="0 0 24 24"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"></path><circle cx="15" cy="7" r="2"></circle><circle cx="9" cy="17" r="2"></circle></symbol>
+      <symbol id="sort-icon" viewBox="0 0 24 24"><path d="M7 5v14m0 0-3-3m3 3 3-3M17 19V5m0 0-3 3m3-3 3 3"></path></symbol>
+      <symbol id="logo-mark" viewBox="0 0 32 32">
+        <defs><radialGradient id="tb-petal-a" cx="50%" cy="85%" r="85%"><stop offset="0" stop-color="#ffb347"/><stop offset=".6" stop-color="#ff8452"/><stop offset="1" stop-color="#ff6a5a"/></radialGradient><radialGradient id="tb-petal-b" cx="50%" cy="85%" r="85%"><stop offset="0" stop-color="#ff9a76"/><stop offset=".6" stop-color="#f6607e"/><stop offset="1" stop-color="#e94a86"/></radialGradient></defs>
+        <g stroke="none"><rect width="32" height="32" rx="8" fill="#6c3ad6"/><path d="M13.31 0.74C13.89 0.69 14.57 0.97 15.14 1.33C15.71 1.69 16.30 2.23 16.75 2.89C17.20 3.55 17.56 4.45 17.81 5.28C18.07 6.11 18.21 7.04 18.29 7.89C18.38 8.75 18.45 9.67 18.32 10.41C18.19 11.16 17.87 11.80 17.50 12.36C17.13 12.92 16.68 13.54 16.12 13.78C15.55 14.02 14.74 14.16 14.13 13.79C13.52 13.42 12.91 12.35 12.45 11.56C11.99 10.78 11.64 9.91 11.37 9.08C11.10 8.25 10.96 7.46 10.85 6.59C10.73 5.71 10.56 4.66 10.69 3.83C10.82 3.00 11.20 2.13 11.64 1.61C12.07 1.10 12.73 0.78 13.31 0.74Z" fill="url(#tb-petal-a)"/><path d="M27.22 10.53C27.53 10.93 27.86 11.50 27.74 12.04C27.62 12.57 27.00 13.27 26.50 13.75C25.99 14.24 25.32 14.61 24.72 14.95C24.12 15.30 23.55 15.62 22.90 15.82C22.25 16.02 21.54 16.11 20.83 16.15C20.13 16.18 19.21 16.27 18.66 16.04C18.11 15.82 17.70 15.28 17.54 14.80C17.38 14.32 17.53 13.69 17.71 13.17C17.90 12.64 18.25 12.12 18.66 11.66C19.08 11.20 19.64 10.80 20.22 10.42C20.80 10.05 21.50 9.61 22.15 9.43C22.80 9.25 23.51 9.30 24.13 9.34C24.75 9.37 25.36 9.44 25.88 9.64C26.39 9.84 26.91 10.13 27.22 10.53Z" fill="url(#tb-petal-b)"/><path d="M25.13 26.88C24.59 27.09 23.95 27.06 23.35 27.05C22.74 27.04 22.15 27.04 21.50 26.84C20.85 26.64 20.06 26.34 19.42 25.84C18.78 25.35 18.16 24.59 17.66 23.89C17.16 23.20 16.67 22.41 16.43 21.68C16.18 20.95 16.09 20.13 16.20 19.51C16.31 18.88 16.63 18.25 17.10 17.93C17.56 17.61 18.33 17.54 19.01 17.60C19.68 17.66 20.46 17.98 21.15 18.30C21.83 18.61 22.46 19.03 23.13 19.49C23.80 19.95 24.62 20.39 25.18 21.05C25.74 21.71 26.26 22.66 26.50 23.45C26.73 24.24 26.80 25.20 26.57 25.78C26.35 26.35 25.67 26.67 25.13 26.88Z" fill="url(#tb-petal-a)"/><path d="M9.56 25.92C9.15 25.68 8.78 25.27 8.58 24.79C8.37 24.31 8.28 23.65 8.34 23.03C8.40 22.41 8.59 21.64 8.92 21.05C9.25 20.47 9.83 19.94 10.32 19.52C10.81 19.10 11.34 18.84 11.88 18.54C12.42 18.24 12.99 17.85 13.55 17.72C14.10 17.59 14.80 17.53 15.22 17.75C15.64 17.98 15.97 18.54 16.09 19.07C16.21 19.59 16.10 20.32 15.95 20.92C15.80 21.52 15.49 22.13 15.17 22.69C14.86 23.24 14.47 23.74 14.06 24.26C13.64 24.78 13.19 25.46 12.69 25.79C12.18 26.11 11.55 26.18 11.03 26.20C10.51 26.22 9.97 26.15 9.56 25.92Z" fill="url(#tb-petal-b)"/><path d="M2.26 12.57C2.51 12.09 2.94 11.64 3.46 11.35C3.98 11.06 4.73 10.98 5.40 10.83C6.06 10.67 6.66 10.48 7.44 10.43C8.22 10.38 9.23 10.33 10.07 10.53C10.91 10.73 11.90 11.16 12.48 11.63C13.05 12.09 13.42 12.78 13.51 13.32C13.61 13.86 13.25 14.36 13.06 14.85C12.86 15.35 12.74 15.86 12.35 16.27C11.95 16.69 11.37 17.15 10.68 17.37C9.99 17.58 9.03 17.61 8.21 17.55C7.39 17.49 6.53 17.28 5.77 16.99C5.01 16.71 4.26 16.31 3.63 15.85C3.00 15.39 2.22 14.80 1.99 14.25C1.76 13.71 2.02 13.06 2.26 12.57Z" fill="url(#tb-petal-a)"/><path d="M17.26 12.44C17.85 12.72 18.29 13.35 18.68 13.84C19.08 14.32 19.46 14.82 19.64 15.37C19.81 15.93 19.89 16.62 19.74 17.18C19.59 17.74 19.19 18.34 18.73 18.73C18.28 19.12 17.61 19.40 16.98 19.52C16.35 19.65 15.59 19.68 14.96 19.49C14.34 19.30 13.66 18.87 13.24 18.39C12.83 17.92 12.58 17.23 12.47 16.64C12.37 16.05 12.45 15.44 12.60 14.86C12.75 14.28 12.94 13.62 13.37 13.16C13.79 12.71 14.48 12.24 15.13 12.12C15.78 11.99 16.67 12.15 17.26 12.44Z" fill="#ffd166"/><path d="M17.26 12.44C17.85 12.72 18.29 13.35 18.68 13.84C19.08 14.32 19.46 14.82 19.64 15.37C19.81 15.93 19.89 16.62 19.74 17.18C19.59 17.74 19.19 18.34 18.73 18.73C18.28 19.12 17.61 19.40 16.98 19.52C16.35 19.65 15.59 19.68 14.96 19.49C14.34 19.30 13.66 18.87 13.24 18.39C12.83 17.92 12.58 17.23 12.47 16.64C12.37 16.05 12.45 15.44 12.60 14.86C12.75 14.28 12.94 13.62 13.37 13.16C13.79 12.71 14.48 12.24 15.13 12.12C15.78 11.99 16.67 12.15 17.26 12.44Z" fill="none" stroke="#e8902a" stroke-width=".7"/><ellipse cx="14.8" cy="14.7" rx="1.1" ry=".85" transform="rotate(-25 14.8 14.7)" fill="#fff3c4"/><path d="M26.41 2.62 26.60 5.24 28.39 5.84 26.52 6.05 25.82 8.29 25.60 5.97 24.01 5.38 25.69 5.13Z" fill="#ffe2a8" stroke="#ffe2a8" stroke-width=".35" stroke-linejoin="round"/><ellipse cx="6.1" cy="26.5" rx="1.0" ry=".85" fill="#ffb3c7"/></g>
+      </symbol>
+      <symbol id="stash-icon" viewBox="0 0 24 24"><path d="M4 13v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"></path><path d="M12 4v10m0 0-4-4m4 4 4-4"></path></symbol>
+      <symbol id="restore-icon" viewBox="0 0 24 24"><path d="M4 13v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"></path><path d="M12 14V4m0 0-4 4m4-4 4 4"></path></symbol>
+      <symbol id="moon-icon" viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z"></path></symbol>
+      <symbol id="bell-icon" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15Z"></path><path d="M10 20.5a2 2 0 0 0 4 0"></path></symbol>
+      <symbol id="leaf-icon" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14Z"></path><path d="M5 19 13 11"></path></symbol>
+      <symbol id="art-later" viewBox="0 0 64 48"><g stroke="none"><path d="M36.77 41.00C36.83 43.74 36.86 46.76 36.71 49.58C36.55 52.40 36.29 55.80 35.84 57.92C35.39 60.04 34.65 61.48 34.01 62.30C33.36 63.12 32.64 63.17 32.00 62.83C31.36 62.49 30.76 61.37 30.19 60.27C29.61 59.17 29.00 58.04 28.54 56.24C28.07 54.43 27.64 51.96 27.38 49.42C27.12 46.88 26.97 43.78 26.98 41.00C27.00 38.22 27.24 35.39 27.48 32.77C27.72 30.15 28.01 27.42 28.43 25.29C28.85 23.17 29.43 21.26 30.02 20.02C30.62 18.77 31.34 17.83 32.00 17.84C32.66 17.85 33.39 18.77 33.97 20.10C34.54 21.44 35.05 23.70 35.44 25.87C35.83 28.04 36.10 30.59 36.33 33.12C36.55 35.64 36.70 38.26 36.77 41.00Z" fill="currentColor" opacity=".13"/><path d="M31.16 23.58C31.31 23.57 31.52 24.13 31.69 24.66C31.86 25.18 32.04 25.91 32.19 26.71C32.34 27.51 32.47 28.52 32.58 29.47C32.69 30.42 32.79 31.41 32.85 32.41C32.92 33.40 33.00 34.62 32.99 35.44C32.98 36.27 32.88 36.92 32.79 37.36C32.69 37.79 32.55 38.09 32.40 38.05C32.26 38.01 32.07 37.57 31.90 37.11C31.74 36.64 31.56 36.02 31.41 35.28C31.25 34.53 31.09 33.57 30.98 32.62C30.86 31.66 30.75 30.49 30.70 29.53C30.65 28.57 30.67 27.67 30.69 26.87C30.71 26.06 30.74 25.24 30.82 24.70C30.90 24.15 31.02 23.58 31.16 23.58Z" fill="var(--art-leaf)"/><path d="M21.32 20.35C21.67 20.03 22.39 19.98 22.95 19.87C23.51 19.76 24.03 19.65 24.67 19.69C25.31 19.72 26.08 19.80 26.80 20.07C27.52 20.35 28.34 20.84 28.99 21.31C29.64 21.79 30.29 22.36 30.71 22.91C31.14 23.46 31.44 24.09 31.55 24.63C31.67 25.18 31.69 25.81 31.41 26.18C31.13 26.56 30.47 26.77 29.88 26.88C29.28 27.00 28.54 26.98 27.85 26.88C27.16 26.77 26.45 26.51 25.72 26.27C24.99 26.02 24.18 25.83 23.47 25.40C22.77 24.97 21.92 24.30 21.49 23.70C21.05 23.10 20.87 22.36 20.85 21.80C20.82 21.24 20.97 20.68 21.32 20.35Z" fill="var(--art-leaf-light)"/><path d="M42.52 17.35C42.76 17.82 42.78 18.42 42.77 19.02C42.77 19.62 42.80 20.28 42.49 20.96C42.18 21.64 41.54 22.44 40.91 23.10C40.27 23.76 39.46 24.43 38.70 24.94C37.94 25.44 37.10 25.86 36.33 26.11C35.56 26.37 34.71 26.55 34.10 26.46C33.49 26.36 32.93 26.02 32.67 25.56C32.42 25.10 32.44 24.35 32.57 23.70C32.70 23.04 33.14 22.32 33.45 21.61C33.77 20.90 33.97 20.16 34.48 19.44C34.98 18.73 35.71 17.90 36.50 17.33C37.28 16.75 38.37 16.18 39.17 15.99C39.98 15.80 40.78 15.98 41.34 16.21C41.90 16.43 42.29 16.88 42.52 17.35Z" fill="var(--art-leaf-light)"/><path d="M33.04 36.06C33.69 36.09 34.42 36.30 35.04 36.56C35.66 36.81 36.37 37.18 36.74 37.61C37.10 38.04 37.19 38.64 37.21 39.12C37.22 39.60 37.06 40.09 36.81 40.49C36.56 40.89 36.15 41.25 35.70 41.54C35.25 41.83 34.72 42.10 34.13 42.23C33.54 42.36 32.80 42.41 32.16 42.32C31.52 42.24 30.86 41.98 30.28 41.71C29.70 41.44 29.07 41.11 28.68 40.71C28.29 40.30 28.00 39.76 27.93 39.28C27.85 38.81 27.97 38.27 28.22 37.86C28.47 37.45 28.93 37.05 29.42 36.80C29.91 36.55 30.56 36.46 31.16 36.34C31.77 36.22 32.40 36.02 33.04 36.06Z" fill="var(--art-soil)"/><ellipse cx="31" cy="38.3" rx="1.2" ry=".7" fill="var(--art-soil-light)"/></g></symbol>
+      <symbol id="art-open" viewBox="0 0 64 48"><g stroke="none"><path d="M36.85 42.00C36.85 44.64 36.70 47.65 36.42 49.96C36.15 52.28 35.65 54.31 35.19 55.88C34.73 57.45 34.19 58.50 33.66 59.39C33.12 60.27 32.57 61.03 32.00 61.19C31.43 61.35 30.82 61.10 30.25 60.36C29.69 59.62 29.05 58.49 28.61 56.74C28.18 54.99 27.86 52.31 27.64 49.85C27.42 47.39 27.26 44.57 27.28 42.00C27.31 39.43 27.54 36.73 27.79 34.43C28.05 32.12 28.40 29.88 28.81 28.14C29.23 26.40 29.75 24.89 30.28 23.98C30.81 23.07 31.42 22.74 32.00 22.70C32.58 22.67 33.20 22.89 33.74 23.78C34.27 24.67 34.77 26.33 35.21 28.05C35.65 29.77 36.11 31.79 36.38 34.11C36.65 36.44 36.84 39.36 36.85 42.00Z" fill="currentColor" opacity=".13"/><path d="M32.81 23.84C32.95 23.87 33.09 24.24 33.20 24.78C33.30 25.31 33.39 26.14 33.43 27.06C33.47 27.98 33.46 29.21 33.43 30.33C33.40 31.44 33.33 32.63 33.24 33.74C33.16 34.85 33.06 36.10 32.93 36.99C32.80 37.89 32.63 38.57 32.47 39.11C32.32 39.65 32.14 40.10 31.99 40.21C31.83 40.31 31.65 40.30 31.54 39.75C31.44 39.20 31.40 37.95 31.37 36.93C31.34 35.92 31.34 34.79 31.37 33.67C31.40 32.56 31.48 31.39 31.56 30.26C31.64 29.13 31.73 27.84 31.86 26.90C31.99 25.96 32.17 25.13 32.33 24.62C32.48 24.11 32.66 23.81 32.81 23.84Z" fill="var(--art-leaf)"/><path d="M22.66 31.30C22.86 30.97 23.06 30.63 23.43 30.41C23.81 30.19 24.31 29.98 24.92 29.96C25.53 29.94 26.37 30.02 27.08 30.29C27.79 30.55 28.57 31.09 29.18 31.53C29.79 31.96 30.33 32.41 30.74 32.88C31.15 33.34 31.52 33.86 31.64 34.30C31.75 34.74 31.68 35.20 31.45 35.52C31.23 35.84 30.77 36.07 30.30 36.23C29.82 36.39 29.24 36.46 28.62 36.49C28.00 36.51 27.30 36.52 26.58 36.37C25.86 36.21 24.95 35.94 24.29 35.53C23.64 35.13 23.01 34.46 22.67 33.94C22.32 33.42 22.23 32.85 22.23 32.41C22.23 31.97 22.47 31.63 22.66 31.30Z" fill="var(--art-leaf-light)"/><path d="M30.16 13.18C30.58 13.11 31.01 13.09 31.46 13.26C31.91 13.42 32.42 13.70 32.86 14.16C33.30 14.62 33.81 15.31 34.08 16.02C34.35 16.74 34.41 17.66 34.48 18.44C34.54 19.21 34.55 19.98 34.45 20.66C34.35 21.33 34.17 22.06 33.87 22.48C33.57 22.91 33.09 23.12 32.65 23.18C32.22 23.24 31.70 23.13 31.26 22.83C30.82 22.54 30.42 21.93 30.02 21.43C29.62 20.93 29.17 20.48 28.84 19.83C28.51 19.18 28.19 18.32 28.06 17.54C27.92 16.75 27.88 15.78 28.03 15.14C28.17 14.49 28.58 14.00 28.94 13.67C29.30 13.35 29.74 13.25 30.16 13.18Z" fill="#f2557f"/><path d="M36.31 13.39C36.70 13.57 37.06 13.96 37.27 14.43C37.48 14.89 37.47 15.59 37.56 16.18C37.66 16.76 37.84 17.28 37.83 17.95C37.82 18.62 37.76 19.53 37.50 20.20C37.24 20.87 36.72 21.49 36.29 21.95C35.85 22.41 35.35 22.78 34.90 22.95C34.44 23.11 33.96 23.10 33.57 22.94C33.19 22.78 32.86 22.41 32.60 22.01C32.33 21.60 32.09 21.10 31.99 20.51C31.89 19.93 31.91 19.18 32.01 18.51C32.11 17.83 32.35 17.13 32.61 16.45C32.86 15.78 33.16 14.99 33.55 14.47C33.94 13.94 34.49 13.49 34.96 13.31C35.42 13.13 35.93 13.20 36.31 13.39Z" fill="#ff8452"/><path d="M33.36 13.97C33.74 13.99 34.16 14.14 34.48 14.47C34.79 14.79 35.07 15.37 35.26 15.92C35.45 16.47 35.59 17.15 35.62 17.78C35.66 18.42 35.56 19.11 35.45 19.72C35.34 20.33 35.18 20.90 34.97 21.45C34.76 22.00 34.51 22.69 34.19 23.04C33.87 23.39 33.41 23.57 33.03 23.56C32.65 23.55 32.19 23.37 31.90 23.00C31.60 22.63 31.40 21.91 31.24 21.34C31.07 20.76 30.98 20.16 30.92 19.54C30.86 18.93 30.81 18.28 30.86 17.62C30.91 16.97 31.01 16.17 31.23 15.62C31.46 15.07 31.85 14.60 32.20 14.32C32.56 14.05 32.99 13.94 33.36 13.97Z" fill="#ff6f6a"/><ellipse cx="45.5" cy="12" rx="1.1" ry=".9" fill="#ffb3c7"/></g></symbol>
+      <symbol id="art-saved" viewBox="0 0 64 48"><g stroke="none"><path d="M18.54 20.01C19.11 19.75 19.89 19.78 20.60 19.92C21.31 20.06 22.09 20.37 22.78 20.85C23.46 21.34 24.15 22.09 24.70 22.82C25.25 23.54 25.70 24.41 26.08 25.23C26.45 26.05 26.83 26.94 26.95 27.73C27.07 28.52 26.96 29.28 26.78 29.98C26.60 30.68 26.35 31.46 25.87 31.90C25.39 32.35 24.62 32.79 23.88 32.65C23.14 32.51 22.16 31.67 21.43 31.06C20.70 30.45 20.06 29.71 19.51 28.99C18.96 28.26 18.55 27.53 18.13 26.70C17.71 25.88 17.15 24.90 16.99 24.04C16.83 23.17 16.91 22.17 17.17 21.50C17.42 20.83 17.97 20.27 18.54 20.01Z" fill="#ff8452"/><path d="M40.60 13.71C41.06 13.96 41.62 14.35 41.72 14.92C41.82 15.49 41.49 16.44 41.20 17.13C40.91 17.82 40.40 18.48 39.97 19.08C39.53 19.69 39.11 20.27 38.57 20.76C38.03 21.25 37.39 21.67 36.73 22.03C36.07 22.40 35.23 22.90 34.61 22.94C33.99 22.98 33.38 22.65 33.03 22.27C32.68 21.88 32.56 21.20 32.52 20.61C32.49 20.02 32.60 19.35 32.81 18.72C33.02 18.08 33.38 17.43 33.79 16.80C34.19 16.17 34.68 15.43 35.24 14.95C35.79 14.48 36.50 14.22 37.12 13.97C37.74 13.73 38.36 13.51 38.94 13.47C39.52 13.42 40.13 13.47 40.60 13.71Z" fill="#f2557f"/><path d="M46.23 34.54C45.95 34.90 45.50 35.13 45.09 35.36C44.68 35.60 44.28 35.83 43.75 35.95C43.23 36.08 42.59 36.18 41.96 36.10C41.34 36.02 40.62 35.74 40.01 35.47C39.40 35.19 38.77 34.84 38.32 34.44C37.87 34.04 37.49 33.52 37.33 33.05C37.16 32.58 37.13 32.02 37.32 31.62C37.51 31.21 38.01 30.86 38.49 30.64C38.97 30.41 39.62 30.32 40.21 30.27C40.79 30.21 41.38 30.25 42.01 30.30C42.64 30.35 43.37 30.32 44.01 30.55C44.64 30.78 45.36 31.22 45.83 31.66C46.29 32.11 46.72 32.73 46.78 33.21C46.85 33.69 46.51 34.18 46.23 34.54Z" fill="#ff8452"/><path d="M27.08 36.40C27.12 36.07 27.29 35.73 27.55 35.47C27.81 35.22 28.21 34.99 28.64 34.86C29.07 34.73 29.64 34.66 30.12 34.71C30.60 34.76 31.12 34.97 31.54 35.15C31.97 35.33 32.30 35.56 32.65 35.80C33.01 36.04 33.44 36.28 33.69 36.59C33.94 36.90 34.18 37.32 34.15 37.64C34.13 37.97 33.85 38.34 33.53 38.57C33.21 38.79 32.70 38.93 32.25 39.02C31.80 39.10 31.31 39.10 30.84 39.07C30.38 39.04 29.94 38.94 29.47 38.82C29.01 38.70 28.43 38.59 28.07 38.35C27.71 38.12 27.48 37.73 27.31 37.41C27.15 37.08 27.04 36.72 27.08 36.40Z" fill="#f2557f"/><ellipse cx="14" cy="14" rx="1.1" ry=".9" fill="#ffb3c7"/><path d="M50.28 9.31 50.45 11.67 52.06 12.22 50.38 12.41 49.75 14.42 49.55 12.34 48.12 11.80 49.63 11.58Z" fill="#ffe2a8"/></g></symbol>
+      <symbol id="art-cleared" viewBox="0 0 64 48"><g stroke="none"><path d="M36.10 43.00C36.12 45.56 36.09 48.28 35.93 50.78C35.77 53.28 35.50 55.85 35.14 58.00C34.79 60.15 34.32 62.60 33.80 63.69C33.27 64.77 32.58 64.72 32.00 64.53C31.42 64.33 30.81 63.70 30.31 62.51C29.80 61.33 29.38 59.33 28.98 57.42C28.58 55.51 28.14 53.46 27.93 51.05C27.72 48.65 27.72 45.68 27.72 43.00C27.72 40.32 27.76 37.47 27.95 35.00C28.15 32.53 28.51 30.13 28.90 28.19C29.29 26.25 29.78 24.59 30.30 23.36C30.81 22.14 31.42 20.98 32.00 20.82C32.58 20.66 33.28 21.14 33.79 22.42C34.29 23.69 34.70 26.29 35.05 28.46C35.39 30.63 35.66 32.99 35.84 35.42C36.01 37.84 36.08 40.44 36.10 43.00Z" fill="currentColor" opacity=".13"/><path d="M31.61 26.24C31.76 26.26 31.92 26.42 32.07 26.83C32.22 27.24 32.38 27.90 32.51 28.72C32.63 29.53 32.77 30.65 32.83 31.71C32.89 32.78 32.87 34.05 32.86 35.13C32.84 36.20 32.82 37.28 32.75 38.18C32.68 39.07 32.58 40.00 32.46 40.48C32.33 40.96 32.16 41.11 32.00 41.07C31.85 41.03 31.67 40.77 31.53 40.24C31.38 39.71 31.26 38.74 31.15 37.90C31.03 37.05 30.90 36.20 30.83 35.18C30.75 34.17 30.70 32.90 30.70 31.80C30.69 30.71 30.73 29.43 30.80 28.59C30.88 27.74 31.03 27.12 31.16 26.73C31.30 26.34 31.45 26.22 31.61 26.24Z" fill="var(--art-leaf)"/><path d="M20.62 31.53C20.95 31.22 21.65 31.16 22.19 31.05C22.73 30.94 23.24 30.84 23.87 30.87C24.50 30.90 25.26 30.97 25.99 31.23C26.71 31.48 27.55 31.94 28.22 32.39C28.89 32.83 29.56 33.37 30.01 33.89C30.47 34.41 30.80 35.01 30.95 35.52C31.10 36.04 31.16 36.64 30.90 37.00C30.65 37.36 30.02 37.57 29.44 37.68C28.86 37.79 28.13 37.78 27.44 37.69C26.75 37.60 26.04 37.36 25.30 37.13C24.57 36.90 23.76 36.72 23.04 36.32C22.32 35.92 21.45 35.28 20.98 34.71C20.52 34.15 20.30 33.44 20.24 32.91C20.18 32.38 20.30 31.84 20.62 31.53Z" fill="var(--art-leaf-light)"/><path d="M42.67 29.41C42.83 29.82 42.78 30.32 42.72 30.81C42.66 31.31 42.63 31.87 42.31 32.41C41.98 32.95 41.37 33.56 40.79 34.06C40.20 34.56 39.46 35.05 38.78 35.41C38.10 35.77 37.37 36.06 36.71 36.22C36.05 36.37 35.32 36.46 34.82 36.33C34.32 36.21 33.88 35.88 33.71 35.47C33.54 35.07 33.63 34.45 33.80 33.91C33.97 33.37 34.39 32.80 34.72 32.23C35.05 31.66 35.27 31.05 35.76 30.49C36.25 29.93 36.93 29.30 37.64 28.89C38.34 28.47 39.30 28.08 40.00 28.00C40.69 27.91 41.34 28.12 41.79 28.35C42.23 28.59 42.52 29.00 42.67 29.41Z" fill="var(--art-leaf-light)"/><path d="M29.50 5.10C29.96 5.06 30.48 5.28 30.93 5.56C31.38 5.84 31.84 6.26 32.19 6.77C32.53 7.29 32.82 7.99 33.02 8.64C33.22 9.29 33.32 10.01 33.39 10.68C33.45 11.34 33.51 12.06 33.41 12.64C33.31 13.22 33.06 13.72 32.77 14.16C32.48 14.60 32.13 15.08 31.69 15.27C31.25 15.45 30.62 15.57 30.14 15.28C29.67 14.99 29.19 14.15 28.83 13.54C28.47 12.93 28.20 12.25 27.99 11.61C27.78 10.96 27.67 10.34 27.58 9.66C27.49 8.98 27.36 8.15 27.46 7.51C27.56 6.86 27.86 6.18 28.20 5.78C28.54 5.38 29.05 5.13 29.50 5.10Z" fill="#ff8452"/><path d="M40.35 12.73C40.59 13.04 40.85 13.49 40.76 13.91C40.67 14.33 40.18 14.87 39.79 15.25C39.39 15.63 38.87 15.91 38.40 16.18C37.93 16.45 37.49 16.71 36.98 16.86C36.48 17.02 35.92 17.09 35.37 17.11C34.82 17.14 34.10 17.21 33.68 17.03C33.25 16.86 32.93 16.44 32.80 16.07C32.68 15.69 32.79 15.20 32.94 14.79C33.08 14.38 33.35 13.97 33.68 13.61C34.00 13.26 34.44 12.94 34.89 12.65C35.35 12.36 35.89 12.01 36.40 11.87C36.91 11.73 37.46 11.78 37.94 11.80C38.43 11.83 38.90 11.88 39.30 12.04C39.71 12.19 40.11 12.42 40.35 12.73Z" fill="#f2557f"/><path d="M38.72 25.49C38.30 25.65 37.80 25.63 37.33 25.62C36.86 25.61 36.40 25.61 35.89 25.45C35.38 25.30 34.77 25.06 34.27 24.68C33.77 24.30 33.28 23.70 32.90 23.16C32.51 22.61 32.12 22.00 31.93 21.43C31.74 20.86 31.67 20.22 31.76 19.74C31.85 19.25 32.09 18.75 32.45 18.50C32.82 18.26 33.42 18.20 33.94 18.25C34.47 18.29 35.08 18.55 35.61 18.79C36.15 19.04 36.63 19.37 37.16 19.72C37.68 20.08 38.32 20.42 38.76 20.94C39.20 21.45 39.61 22.20 39.79 22.81C39.97 23.43 40.03 24.18 39.85 24.63C39.67 25.07 39.14 25.32 38.72 25.49Z" fill="#ff8452"/><path d="M26.58 24.74C26.26 24.55 25.97 24.23 25.81 23.85C25.65 23.48 25.58 22.97 25.62 22.48C25.67 22.00 25.82 21.40 26.08 20.94C26.33 20.48 26.78 20.07 27.17 19.75C27.55 19.42 27.97 19.22 28.38 18.98C28.80 18.75 29.25 18.44 29.69 18.34C30.12 18.24 30.66 18.19 30.99 18.37C31.32 18.54 31.58 18.98 31.67 19.39C31.77 19.80 31.68 20.37 31.56 20.84C31.44 21.31 31.20 21.78 30.95 22.22C30.71 22.65 30.41 23.04 30.08 23.44C29.76 23.85 29.41 24.38 29.02 24.63C28.62 24.89 28.13 24.94 27.72 24.96C27.32 24.98 26.89 24.92 26.58 24.74Z" fill="#f2557f"/><path d="M20.88 14.33C21.08 13.95 21.41 13.60 21.82 13.38C22.23 13.15 22.81 13.09 23.33 12.97C23.85 12.85 24.32 12.69 24.93 12.65C25.53 12.61 26.32 12.58 26.98 12.73C27.63 12.89 28.41 13.22 28.85 13.59C29.30 13.95 29.59 14.49 29.66 14.91C29.74 15.33 29.46 15.72 29.30 16.11C29.15 16.49 29.06 16.89 28.75 17.21C28.44 17.54 27.99 17.90 27.45 18.06C26.91 18.23 26.16 18.26 25.52 18.21C24.88 18.16 24.21 18.00 23.62 17.77C23.03 17.55 22.44 17.24 21.95 16.88C21.46 16.53 20.85 16.06 20.67 15.64C20.49 15.21 20.69 14.71 20.88 14.33Z" fill="#ff8452"/><path d="M32.58 14.22C33.04 14.44 33.38 14.93 33.69 15.31C34.00 15.69 34.30 16.08 34.44 16.51C34.57 16.95 34.63 17.48 34.51 17.92C34.40 18.36 34.09 18.83 33.73 19.13C33.38 19.44 32.85 19.65 32.36 19.75C31.87 19.85 31.28 19.87 30.79 19.72C30.31 19.58 29.77 19.24 29.45 18.87C29.13 18.50 28.93 17.96 28.85 17.50C28.77 17.04 28.83 16.57 28.95 16.11C29.07 15.66 29.22 15.14 29.55 14.79C29.87 14.43 30.42 14.06 30.92 13.97C31.43 13.88 32.12 14.00 32.58 14.22Z" fill="#ffd166"/><path d="M50.31 6.02 50.50 8.64 52.29 9.24 50.42 9.45 49.72 11.69 49.50 9.37 47.91 8.78 49.59 8.53Z" fill="#ffe2a8"/><path d="M13.22 12.91 13.35 14.74 14.60 15.17 13.30 15.32 12.80 16.88 12.65 15.26 11.54 14.85 12.72 14.67Z" fill="#ffe2a8"/><ellipse cx="48" cy="27" rx="1.1" ry=".9" fill="#ffb3c7"/></g></symbol>
+      <symbol id="art-compost" viewBox="0 0 64 48"><g stroke="none"><path d="M28.66 36.00C28.72 38.36 28.78 41.24 28.55 43.37C28.32 45.51 27.75 47.39 27.27 48.81C26.80 50.23 26.23 51.13 25.68 51.87C25.13 52.62 24.55 53.33 24.00 53.26C23.45 53.20 22.91 52.21 22.36 51.49C21.81 50.78 21.16 50.34 20.69 48.96C20.21 47.59 19.78 45.41 19.53 43.25C19.28 41.09 19.16 38.37 19.19 36.00C19.22 33.63 19.43 31.09 19.71 29.05C19.99 27.01 20.45 25.37 20.87 23.75C21.29 22.14 21.72 20.22 22.24 19.37C22.76 18.53 23.42 18.58 24.00 18.66C24.58 18.75 25.19 19.03 25.70 19.91C26.22 20.78 26.68 22.36 27.09 23.92C27.50 25.47 27.91 27.22 28.17 29.24C28.43 31.25 28.59 33.64 28.66 36.00Z" fill="currentColor" opacity=".13"/><path d="M11.27 29.28C11.47 28.87 11.91 28.53 12.37 28.29C12.82 28.04 13.41 27.85 14.01 27.81C14.62 27.76 15.35 27.85 16.00 28.01C16.64 28.17 17.29 28.47 17.87 28.77C18.46 29.08 19.07 29.45 19.49 29.86C19.92 30.27 20.21 30.77 20.43 31.25C20.65 31.73 20.88 32.29 20.82 32.75C20.76 33.22 20.55 33.80 20.08 34.05C19.61 34.29 18.68 34.25 18.00 34.21C17.32 34.18 16.64 34.02 16.00 33.84C15.37 33.67 14.80 33.43 14.19 33.16C13.57 32.88 12.80 32.61 12.31 32.21C11.81 31.80 11.38 31.22 11.21 30.73C11.04 30.24 11.08 29.69 11.27 29.28Z" fill="#e8a35c"/><path d="M26.77 24.13C27.26 24.20 27.88 24.37 28.15 24.83C28.43 25.30 28.45 26.23 28.42 26.93C28.39 27.62 28.15 28.35 27.97 29.02C27.79 29.69 27.63 30.33 27.34 30.94C27.06 31.55 26.68 32.13 26.24 32.67C25.81 33.20 25.26 33.92 24.74 34.15C24.23 34.38 23.59 34.29 23.16 34.06C22.72 33.83 22.39 33.28 22.15 32.77C21.90 32.26 21.76 31.63 21.71 31.00C21.66 30.37 21.71 29.66 21.84 28.98C21.96 28.30 22.13 27.48 22.45 26.89C22.78 26.30 23.33 25.86 23.79 25.45C24.26 25.04 24.73 24.65 25.23 24.44C25.73 24.22 26.28 24.07 26.77 24.13Z" fill="#e98aa0"/><path d="M37.24 30.75C37.18 31.17 36.91 31.57 36.68 31.95C36.45 32.34 36.23 32.71 35.86 33.06C35.48 33.40 35.00 33.80 34.44 34.02C33.88 34.24 33.15 34.33 32.51 34.36C31.87 34.40 31.17 34.37 30.60 34.22C30.03 34.08 29.47 33.81 29.10 33.49C28.74 33.17 28.44 32.72 28.41 32.31C28.38 31.89 28.62 31.39 28.92 31.00C29.21 30.61 29.72 30.26 30.18 29.97C30.65 29.68 31.16 29.49 31.72 29.25C32.27 29.02 32.86 28.68 33.50 28.58C34.14 28.47 34.95 28.48 35.54 28.62C36.14 28.76 36.79 29.07 37.07 29.42C37.35 29.78 37.30 30.33 37.24 30.75Z" fill="#f0b07a"/><path d="M20.36 17.43C20.78 17.29 21.28 17.35 21.77 17.43C22.27 17.51 22.82 17.56 23.35 17.90C23.88 18.24 24.47 18.87 24.95 19.48C25.43 20.08 25.89 20.84 26.23 21.53C26.57 22.22 26.83 22.97 26.96 23.63C27.09 24.30 27.15 25.03 27.01 25.52C26.87 26.02 26.53 26.44 26.12 26.60C25.71 26.75 25.09 26.65 24.56 26.46C24.02 26.27 23.47 25.83 22.91 25.48C22.35 25.13 21.75 24.88 21.21 24.38C20.67 23.87 20.06 23.17 19.67 22.45C19.28 21.73 18.92 20.75 18.86 20.06C18.80 19.36 19.03 18.72 19.28 18.28C19.53 17.84 19.95 17.58 20.36 17.43Z" fill="var(--art-leaf-light)"/></g></symbol>
+      <symbol id="keyboard-icon" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"></path></symbol>
+    </svg>
+    <script src="i18n.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+._*
+__MACOSX/
+
+# 打包产物：压缩包走 GitHub Release，不进仓库
+*.zip
+
+# 日志与临时文件
+*.log
+tmp/
